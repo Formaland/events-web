@@ -1,0 +1,7 @@
+sidebar:
+  dashboard:
+    name: Tableau de board
+  user:
+    name: Gestion des utilisateurs
+    index: Tout les utilisateurs
+    new: Ajouter un utilisateur

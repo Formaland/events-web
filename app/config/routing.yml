@@ -1,0 +1,2 @@
+pfe_events_web:
+    resource: "@PfeWebBundle/Resources/config/routing.yml"
