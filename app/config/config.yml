@@ -1,10 +1,11 @@
 imports:
+    - { resource: project.yml }
     - { resource: parameters.yml }
     - { resource: security.yml }
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      ~
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -30,7 +31,6 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~

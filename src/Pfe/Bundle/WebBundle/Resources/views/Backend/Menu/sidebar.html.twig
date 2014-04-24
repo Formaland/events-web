@@ -1,0 +1,34 @@
+<ul class="nav nav-pills nav-stacked nav-bracket">
+    {% for item in menu %}
+            <li class="{{ item.class is defined ? item.class : '' }} {{ item.submenu is defined ? 'nav-parent' : '' }} {{ item.route is defined and route == item.route ? 'active' : '' }} {{ item.routes is defined and route in item.routes ? 'active' : '' }}">
+                <a href="{{ item.route is defined ? path(item.route) : 'javascript:void(0)' }}">
+                    {% if item.icon is defined %}
+                        <i class="fa fa-{{ item.icon }}"></i>
+                    {% endif %}
+                    <span class="title">
+                        {{ item.title|trans({}, 'PfeWebBundleBackend') }}
+                    </span>
+                        <span class="selected"></span>
+                    {% if item.submenu is defined %}
+                        <span class="arrow  open"></span>
+                    {% endif %}
+                </a>
+                {% if item.submenu is defined %}
+                <ul class="children">
+                    {% for subitem in item.submenu %}
+                    <li>
+                       <a href="{{ subitem.route is defined ? path(subitem.route) : 'javascript:void(0)' }}">
+                           {% if subitem.icon is defined %}
+                               <i class="fa fa-{{ subitem.icon }}"></i>
+                           {% endif %}
+                           <span class="title">
+                               {{ subitem.title|trans({}, 'PfeWebBundleBackend') }}
+                           </span>
+                       </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </li>
+    {% endfor %}
+</ul>
