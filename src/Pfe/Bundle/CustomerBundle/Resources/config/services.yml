@@ -1,0 +1,7 @@
+parameters:
+#    pfe_customer.example.class: Pfe\Bundle\CustomerBundle\Example
+
+services:
+#    pfe_customer.example:
+#        class: %pfe_customer.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

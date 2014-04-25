@@ -18,21 +18,10 @@ class MenuController extends Controller {
             ),
             array(
                 'routes' => array('pfe_web_backend_dashboard'),
+                'route' => 'customer',
                 'icon' => 'user',
                 'class' => 'start',
-                'title' => 'sidebar.user.name',
-                'submenu' => array(
-                    array(
-                        'route' => 'pfe_web_backend_dashboard',
-                        'class' => 'start',
-                        'title' => 'sidebar.user.index',
-                    ),
-                    array(
-                        'route' => 'pfe_web_backend_dashboard',
-                        'class' => 'start',
-                        'title' => 'sidebar.user.new',
-                    ),
-                ),
+                'title' => 'sidebar.customer.name',
             ),
         );
 
