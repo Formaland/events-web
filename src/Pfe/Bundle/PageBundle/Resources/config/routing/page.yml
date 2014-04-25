@@ -1,0 +1,34 @@
+page:
+    pattern:  /
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: page, permanent: true }
+
+page_index:
+    pattern:  /index
+    defaults: { _controller: "PageBundle:Page:index" }
+
+page_show:
+    pattern:  /{token}/show
+    defaults: { _controller: "PageBundle:Page:show" }
+
+page_new:
+    pattern:  /new
+    defaults: { _controller: "PageBundle:Page:new" }
+
+page_create:
+    pattern:  /create
+    defaults: { _controller: "PageBundle:Page:create" }
+    requirements: { _method: post }
+
+page_edit:
+    pattern:  /{token}/edit
+    defaults: { _controller: "PageBundle:Page:edit" }
+
+page_update:
+    pattern:  /{token}/update
+    defaults: { _controller: "PageBundle:Page:update" }
+    requirements: { _method: post|put }
+
+page_delete:
+    pattern:  /{token}/delete
+    defaults: { _controller: "PageBundle:Page:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,41 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Page list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Createdat</th>
+                <th>Updatedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.createdAt }}</td>
+                <td>{{ entity.updatedAt }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('page_show', { 'token': entity.token }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('page_edit', { 'token': entity.token }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('page_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

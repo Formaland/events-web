@@ -1,0 +1,22 @@
+Pfe\Bundle\PageBundle\Entity\Page:
+    type: entity
+    table: ws_page
+    repositoryClass: Pfe\Bundle\PageBundle\Entity\Repository\PageRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        token:
+            type: string
+            nullable: false
+            unique: true
+        createdAt:
+            type: datetime
+            nullable: false
+        updatedAt:
+            type: datetime
+            nullable: true
+    lifecycleCallbacks: {  }
