@@ -1,6 +1,8 @@
 sidebar:
   dashboard:
     name: Tableau de board
+  customer:
+      name: Gestion des clients
   user:
     name: Gestion des utilisateurs
     index: Tout les utilisateurs
