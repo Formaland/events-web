@@ -82,3 +82,23 @@ a2lix_translation_form:
     required_locales: [fr]
     manager_registry: doctrine
     templating: "A2lixTranslationFormBundle::default.html.twig"
+
+# FOSUserBundle Configuration
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Pfe\Bundle\CustomerBundle\Entity\Customer
+    # Ajout de confirmation d'inscription par email
+    registration:
+        confirmation:
+            enabled: true
+    # adresse email de l'emmeteur d'email pour l'inscription et l'oublie de mot de passe etc ...
+    from_email:
+        address:        noreply@boulangerielemarquis.com
+        sender_name:    Acme Demo App
+
+# Gravatar Configuration
+ornicar_gravatar:
+  rating: g
+  size: 288
+  default: mm
