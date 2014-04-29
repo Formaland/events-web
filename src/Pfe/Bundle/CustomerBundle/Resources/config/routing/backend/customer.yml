@@ -1,0 +1,34 @@
+customer:
+    pattern:  /
+    defaults: { _controller: "PfeCustomerBundle:Customer:index" }
+
+customer_show:
+    pattern:  /{token}/show
+    defaults: { _controller: "PfeCustomerBundle:Customer:show" }
+
+customer_new:
+    pattern:  /new
+    defaults: { _controller: "PfeCustomerBundle:Customer:new" }
+
+customer_create:
+    pattern:  /create
+    defaults: { _controller: "PfeCustomerBundle:Customer:create" }
+    requirements: { _method: post }
+
+customer_edit:
+    pattern:  /{token}/edit
+    defaults: { _controller: "PfeCustomerBundle:Customer:edit" }
+
+customer_update:
+    pattern:  /{token}/update
+    defaults: { _controller: "PfeCustomerBundle:Customer:update" }
+    requirements: { _method: post|put }
+
+customer_delete:
+    pattern:  /{token}/delete
+    defaults: { _controller: "PfeCustomerBundle:Customer:delete" }
+    requirements: { _method: post|delete }
+
+customer_locked:
+    pattern:  /{token}/locked
+    defaults: { _controller: "PfeCustomerBundle:Backend/Customer:locked" }

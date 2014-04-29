@@ -4311,3 +4311,7 @@ div.error label.error:before {
    }
    
 }
+
+.text-white {
+    color: #FFFFFF !important;
+}

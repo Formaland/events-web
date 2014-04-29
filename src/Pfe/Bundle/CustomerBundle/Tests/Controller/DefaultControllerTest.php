@@ -1,6 +1,6 @@
 <?php
 
-namespace Pfe\Bundle\WebBundle\Tests\Controller;
+namespace Pfe\Bundle\CustomerBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

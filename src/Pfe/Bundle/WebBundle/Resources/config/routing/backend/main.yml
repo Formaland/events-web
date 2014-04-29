@@ -1,3 +1,7 @@
 pfe_web_backend_dashboard:
     pattern:  /dashboard
     defaults: { _controller: PfeWebBundle:Backend/Dashboard:index  }
+
+pfe_web_backend_customer:
+    resource: "@PfeCustomerBundle/Resources/config/routing/backend/routing.yml"
+    prefix: /customer
