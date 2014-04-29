@@ -1,33 +1,3 @@
-customer:
-    pattern:  /
-    defaults: { _controller: "PfeCustomerBundle:Backend/Customer:index" }
-
-customer_show:
-    pattern:  /{token}/show
-    defaults: { _controller: "PfeCustomerBundle:Backend/Customer:show" }
-
-customer_new:
-    pattern:  /new
-    defaults: { _controller: "PfeCustomerBundle:Backend/Customer:new" }
-
-customer_create:
-    pattern:  /create
-    defaults: { _controller: "PfeCustomerBundle:Backend/Customer:create" }
-    requirements: { _method: post }
-
-customer_edit:
-    pattern:  /{token}/edit
-    defaults: { _controller: "PfeCustomerBundle:Backend/Customer:edit" }
-
-customer_update:
-    pattern:  /{token}/update
-    defaults: { _controller: "PfeCustomerBundle:Backend/Customer:update" }
-    requirements: { _method: post|put }
-
-customer_delete:
-    pattern:  /{token}/delete
-    defaults: { _controller: "PfeCustomerBundle:Backend/Customer:delete" }
-
-customer_locked:
-    pattern:  /{token}/locked
-    defaults: { _controller: "PfeCustomerBundle:Backend/Customer:locked" }
+pfe_customer_bundle_customer:
+    resource: "@PfeCustomerBundle/Resources/config/routing/backend/customer.yml"
+    prefix: /customer

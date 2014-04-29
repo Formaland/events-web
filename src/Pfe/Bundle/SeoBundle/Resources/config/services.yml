@@ -1,0 +1,10 @@
+services:
+    pfe.seo.meta.default:
+        class: Pfe\Bundle\SeoBundle\Seo\SeoMeta
+    
+    pfe.seo.seo_extension:
+        class: Pfe\Bundle\SeoBundle\Twig\Extension\SeoExtension
+        public: false
+        tag:
+          - { name: twig.extension }
+        arguments: [@pfe.seo.meta.default]
