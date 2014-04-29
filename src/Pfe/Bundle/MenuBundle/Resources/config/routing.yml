@@ -1,0 +1,3 @@
+pfe_menu_homepage:
+    pattern:  /
+    defaults: { _controller: PfeMenuBundle:Default:index }

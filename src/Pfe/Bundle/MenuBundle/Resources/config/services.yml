@@ -1,0 +1,7 @@
+parameters:
+#    pfe_menu.example.class: Pfe\Bundle\MenuBundle\Example
+
+services:
+#    pfe_menu.example:
+#        class: %pfe_menu.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
