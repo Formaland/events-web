@@ -1,12 +1,12 @@
 pfe_web_backend:
-    host:     "{host}"
+    host: "{host}"
     resource: "@PfeWebBundle/Resources/config/routing/backend/main.yml"
     defaults: { host: %host_backend% }
     requirements:
         host: %host_backend%
 
 pfe_web_frontend:
-    host:     "{host}"
+    host: "{host}"
     resource: "@PfeWebBundle/Resources/config/routing/frontend/main.yml"
     defaults: { host: %host% }
     requirements:

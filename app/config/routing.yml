@@ -1,6 +1,2 @@
-page:
-    resource: "@PageBundle/Resources/config/routing.yml"
-    prefix:   /
-
 pfe_events_web:
     resource: "@PfeWebBundle/Resources/config/routing.yml"

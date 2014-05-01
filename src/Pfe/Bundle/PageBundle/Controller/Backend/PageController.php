@@ -1,6 +1,6 @@
 <?php
 
-namespace Pfe\Bundle\PageBundle\Controller;
+namespace Pfe\Bundle\PageBundle\Controller\Backend;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -26,7 +26,7 @@ class PageController extends Controller
 
         $entities = $em->getRepository('PageBundle:Page')->findAll();
 
-        return $this->render('PageBundle:Page:index.html.twig', array(
+        return $this->render('PageBundle:Backend/Page:index.html.twig', array(
             'entities' => $entities,
         ));
     }
@@ -48,7 +48,7 @@ class PageController extends Controller
             return $this->redirect($this->generateUrl('page_show', array('token' => $entity->getToken())));
         }
 
-        return $this->render('PageBundle:Page:new.html.twig', array(
+        return $this->render('PageBundle:Backend/Page:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -104,7 +104,7 @@ class PageController extends Controller
 
         $deleteForm = $this->createDeleteForm($token);
 
-        return $this->render('PageBundle:Page:show.html.twig', array(
+        return $this->render('PageBundle:Backend/Page:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
     }
@@ -126,7 +126,7 @@ class PageController extends Controller
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($token);
 
-        return $this->render('PageBundle:Page:edit.html.twig', array(
+        return $this->render('PageBundle:Backend/Page:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -175,7 +175,7 @@ class PageController extends Controller
             return $this->redirect($this->generateUrl('page_edit', array('token' => $token)));
         }
 
-        return $this->render('PageBundle:Page:edit.html.twig', array(
+        return $this->render('PageBundle:Backend/Page:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

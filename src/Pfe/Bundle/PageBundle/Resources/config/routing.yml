@@ -1,3 +1,0 @@
-page_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: PageBundle:Default:index }

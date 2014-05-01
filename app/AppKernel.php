@@ -19,13 +19,13 @@ class AppKernel extends Kernel
 
             new Pfe\Bundle\WebBundle\PfeWebBundle(),
             new Pfe\Bundle\CustomerBundle\PfeCustomerBundle(),
+            new Pfe\Bundle\PageBundle\PfePageBundle(),
 
             new FOS\UserBundle\FOSUserBundle(),
             new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
             new A2lix\I18nDoctrineBundle\A2lixI18nDoctrineBundle(),
-            new Pfe\Bundle\PageBundle\PageBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

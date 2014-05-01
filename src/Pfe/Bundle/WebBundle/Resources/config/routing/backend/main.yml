@@ -5,3 +5,7 @@ pfe_web_backend_dashboard:
 pfe_web_backend_customer:
     resource: "@PfeCustomerBundle/Resources/config/routing/backend/routing.yml"
     prefix: /customer
+
+pfe_page_bundle:
+   resource: "@PfePageBundle/Resources/config/routing/backend/routing.yml"
+   prefix: /page

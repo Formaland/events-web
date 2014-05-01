@@ -1,0 +1,2 @@
+pfe_page_bundle_page:
+    resource: "@PfePageBundle/Resources/config/routing/backend/page.yml"

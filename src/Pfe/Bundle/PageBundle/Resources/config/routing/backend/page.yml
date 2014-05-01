@@ -1,9 +1,5 @@
-page:
-    pattern:  /
-    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: page, permanent: true }
-
 page_index:
-    pattern:  /index
+    pattern:  /
     defaults: { _controller: "PageBundle:Page:index" }
 
 page_show:

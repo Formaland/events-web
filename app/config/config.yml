@@ -97,6 +97,7 @@ fos_user:
         address:        noreply@boulangerielemarquis.com
         sender_name:    Acme Demo App
 
+
 # Gravatar Configuration
 ornicar_gravatar:
   rating: g
