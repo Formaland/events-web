@@ -17,7 +17,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
-            new Pfe\Bundle\WebBundle\PfeWebBundle(),
+            //new Pfe\Bundle\WebBundle\PfeWebBundle(),
             new Pfe\Bundle\CustomerBundle\PfeCustomerBundle(),
             new Pfe\Bundle\PageBundle\PfePageBundle(),
 
