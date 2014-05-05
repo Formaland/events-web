@@ -25,8 +25,6 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
             new A2lix\I18nDoctrineBundle\A2lixI18nDoctrineBundle(),
-
-            new Pfe\Bundle\MenuBundle\PfeMenuBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

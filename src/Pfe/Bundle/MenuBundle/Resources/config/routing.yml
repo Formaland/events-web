@@ -1,2 +1,0 @@
-pfe_menu_bundle_menu:
-    resource: "@PfeMenuBundle/Resources/config/routing/backend/menu.yml"
