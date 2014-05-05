@@ -24,9 +24,11 @@ class PageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('PageBundle:Page')->findAll();
+        $locale = $this->container->getParameter('locale');
 
-        return $this->render('PageBundle:Backend/Page:index.html.twig', array(
+        $entities = $em->getRepository('PfePageBundle:Page')->findAllByLocale($locale);
+
+        return $this->render('PfePageBundle:Backend/Page:index.html.twig', array(
             'entities' => $entities,
         ));
     }
@@ -45,10 +47,14 @@ class PageController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('page_show', array('token' => $entity->getToken())));
+            $this->get('session')->getFlashBag()->set('success', 'your request has been processed successfully');
+
+            return $this->redirect($this->generateUrl('pfe_page_show', array('token' => $entity->getToken())));
         }
 
-        return $this->render('PageBundle:Backend/Page:new.html.twig', array(
+        $this->get('session')->getFlashBag()->set('error', 'please check your form');
+
+        return $this->render('PfePageBundle:Backend/Page:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -64,7 +70,7 @@ class PageController extends Controller
     private function createCreateForm(Page $entity)
     {
         $form = $this->createForm(new PageCreate(), $entity, array(
-            'action' => $this->generateUrl('page_create'),
+            'action' => $this->generateUrl('pfe_page_create'),
             'method' => 'POST',
         ));
 
@@ -82,7 +88,7 @@ class PageController extends Controller
         $entity = new Page();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('PageBundle:Page:new.html.twig', array(
+        return $this->render('PfePageBundle:Backend/Page:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -96,7 +102,9 @@ class PageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('PageBundle:Page')->findOneBy(array('token' => $token));
+        $locale = $this->container->getParameter('locale');
+
+        $entity = $em->getRepository('PfePageBundle:Page')->findOneByLocale($token, $locale);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Page entity.');
@@ -104,7 +112,7 @@ class PageController extends Controller
 
         $deleteForm = $this->createDeleteForm($token);
 
-        return $this->render('PageBundle:Backend/Page:show.html.twig', array(
+        return $this->render('PfePageBundle:Backend/Page:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
     }
@@ -117,7 +125,7 @@ class PageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('PageBundle:Page')->findOneBy(array('token' => $token));
+        $entity = $em->getRepository('PfePageBundle:Page')->findOneBy(array('token' => $token));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Page entity.');
@@ -126,7 +134,7 @@ class PageController extends Controller
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($token);
 
-        return $this->render('PageBundle:Backend/Page:edit.html.twig', array(
+        return $this->render('PfePageBundle:Backend/Page:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -143,7 +151,7 @@ class PageController extends Controller
     private function createEditForm(Page $entity)
     {
         $form = $this->createForm(new PageEdit(), $entity, array(
-            'action' => $this->generateUrl('page_update', array('token' => $entity->getToken())),
+            'action' => $this->generateUrl('pfe_page_update', array('token' => $entity->getToken())),
             'method' => 'PUT',
         ));
 
@@ -159,7 +167,7 @@ class PageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('PageBundle:Page')->findOneBy(array('token' => $token));
+        $entity = $em->getRepository('PfePageBundle:Page')->findOneBy(array('token' => $token));
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Page entity.');
@@ -172,10 +180,14 @@ class PageController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('page_edit', array('token' => $token)));
+            $this->get('session')->getFlashBag()->set('success', 'your request has been processed successfully');
+
+            return $this->redirect($this->generateUrl('pfe_page_edit', array('token' => $token)));
         }
 
-        return $this->render('PageBundle:Backend/Page:edit.html.twig', array(
+        $this->get('session')->getFlashBag()->set('error', 'please check your form');
+
+        return $this->render('PfePageBundle:Backend/Page:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -192,7 +204,7 @@ class PageController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('PageBundle:Page')->findOneBy(array('token' => $token));
+            $entity = $em->getRepository('PfePageBundle:Page')->findOneBy(array('token' => $token));
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Page entity.');
@@ -200,9 +212,13 @@ class PageController extends Controller
 
             $em->remove($entity);
             $em->flush();
+
+            $this->get('session')->getFlashBag()->set('success', 'your request has been processed successfully');
         }
 
-        return $this->redirect($this->generateUrl('page'));
+        $this->get('session')->getFlashBag()->set('error', 'please check your form');
+
+        return $this->redirect($this->generateUrl('pfe_page'));
     }
 
     /**
@@ -215,7 +231,7 @@ class PageController extends Controller
     private function createDeleteForm($token)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('page_delete', array('token' => $token)))
+            ->setAction($this->generateUrl('pfe_page_delete', array('token' => $token)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

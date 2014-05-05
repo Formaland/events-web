@@ -7,6 +7,8 @@
 
     {% stylesheets output='compiled/backend/style.min.css' filter='cssrewrite'
         'bundles/pfeweb/backend/css/style.default.css'
+        'bundles/pfeweb/backend/css/jquery.gritter.css'
+        'bundles/pfeweb/backend/css/bootstrap-wysihtml5.css'
     %}
         <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
@@ -46,10 +48,36 @@
         'bundles/pfeweb/backend/js/jquery.sparkline.min.js'
         'bundles/pfeweb/backend/js/toggles.min.js'
         'bundles/pfeweb/backend/js/retina.min.js'
+        'bundles/pfeweb/backend/js/jquery.cookies.js'
         'bundles/pfeweb/backend/js/custom.js'
+        'bundles/pfeweb/backend/js/jquery.gritter.min.js'
+        'bundles/pfeweb/backend/js/wysihtml5-0.3.0.min.js'
+        'bundles/pfeweb/backend/js/bootstrap-wysihtml5.js'
     %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
+    <script>
+        jQuery(document).ready(function() {
 
+            jQuery('.wysiwyg').wysihtml5({color: true,html:true});
+
+            {% for flash in app.session.flashbag.get('success') %}
+            jQuery.gritter.add({
+                title: 'Success',
+                text: '{{ flash }}',
+                class_name: 'growl-success',
+                sticky: false
+            });
+            {% endfor %}
+            {% for flash in app.session.flashbag.get('error') %}
+            jQuery.gritter.add({
+                title: 'Error',
+                text: '{{ flash }}',
+                class_name: 'growl-danger',
+                sticky: false
+            });
+            {% endfor %}
+        });
+    </script>
 </body>
 </html>

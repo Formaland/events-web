@@ -1,0 +1,77 @@
+{% block extends %}
+{{ "{% extends 'PfeWebBundle:Backend:layout.html.twig' %}" }}
+{% endblock extends %}
+
+{% block body %}
+{{ "{% block title_head -%}" }}
+    List {{ entity }}
+{{ "{% endblock %}" }}
+
+{{ "{% block title_page -%}" }}
+    <i class="fa fa-list"></i> List {{ entity }}
+{{ "{% endblock %}" }}
+
+{{ "{% block content -%}" }}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {% if 'new' in actions %}
+                        <div class="pull-right">
+                            <a href="{{ "{{ path('" ~ route_name_prefix ~ "_new') }}" }}" class="btn btn-success"><span class="fa fa-plus"></span> {{ '&MediumSpace;' }} Add {{ entity }}</a>
+                        </div>
+                    {% endif %}
+                    <h3 class="panel-title">List {{ entity }}</h3>
+                    <p></p>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table" id="table1">
+                            <thead>
+                            <tr>
+                                {%- for field, metadata in fields %}
+                                    {%- if metadata.fieldName != 'token' and metadata.fieldName != 'id' %}
+
+                                        <th>{{ field|capitalize }}</th>
+
+                                    {%- endif %}
+                                {%- endfor %}
+
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{ '{% for entity in entities %}' }}
+                            <tr>
+
+                                {%- for field, metadata in fields %}
+                                    {%- if metadata.fieldName != 'token' and metadata.fieldName != 'id' %}
+
+                                        <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ ' }}' }}</td>
+
+                                    {%- elseif metadata.type in ['date', 'datetime'] %}
+
+                                        <td>{{ '{% if entity.' ~ field|replace({'_': ''}) ~ ' %}{{ entity.' ~ field|replace({'_': ''}) ~ '|date(\'Y-m-d H:i:s\') }}{% endif %}' }}</td>
+
+                                    {%- endif %}
+
+                                    {%- if loop.last %}
+
+                                        <td>
+                                            {%- include "crud/views/others/actions.html.twig.twig" %}
+                                        </td>
+
+                                    {%- endif %}
+                                {%- endfor %}
+
+                            </tr>
+                            {{ '{% endfor %}' }}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{ "{% endblock %}" }}
+{% endblock body %}

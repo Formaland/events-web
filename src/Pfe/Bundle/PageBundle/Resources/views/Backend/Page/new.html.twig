@@ -1,13 +1,69 @@
-{% extends '::base.html.twig' %}
+{% extends 'PfeWebBundle:Backend:layout.html.twig' %}
 
-{% block body -%}
-    <h1>Page creation</h1>
+{% block title_head -%}
+New Page
+{% endblock %}
 
-    {{ form(form) }}
+{% block title_page -%}
+<i class="fa fa-plus"></i> New Page
+{% endblock %}
 
+{% block content -%}
+    {{ form_start(form, { 'attr': {'class': 'form-horizontal' } }) }}
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs">
+                        {% for translationsFields in form.translations %}
+                            {% set locale = translationsFields.vars.name %}
+
+                            <li {% if app.request.locale == locale %}class="active"{% endif %}>
+                                <a href="#" data-toggle="tab" data-target="#page_form_tranlation_{{ locale }}">
+                                    <img src="{{ asset('bundles/pfeweb/backend/images/flags/'~ locale ~'.png') }}" alt="{{ locale }}"/> &MediumSpace;
+                                    {{ locale|capitalize }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content mb30">
+                        {% for field in form.translations %}
+                            {% set locale = field.vars.name %}
+
+                            <div class="tab-pane {% if app.request.locale == locale %}active{% endif %}" id="page_form_tranlation_{{ locale }}">
+                                <div class="row row-pad-5">
+                                    <div class="col-lg-12">
+                                        {{ form_widget(field.title) }}
+                                    </div>
+                                    <div class="col-lg-12">
+                                        {{ form_widget(field.content, { 'attr': { 'class': 'wysiwyg form-control' } }) }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Panel Title</h3>
+                </div>
+                <div class="panel-body">
+                    {{ form_widget(form.template, { 'attr': { 'class': 'form-control input-sm mb15' } }) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
         <ul class="record_actions">
     <li>
-        <a href="{{ path('page') }}">
+        <a href="{{ path('pfe_page') }}">
             Back to the list
         </a>
     </li>

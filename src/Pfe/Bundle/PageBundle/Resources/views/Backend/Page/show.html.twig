@@ -1,13 +1,21 @@
-{% extends '::base.html.twig' %}
+{% extends 'PfeWebBundle:Backend:layout.html.twig' %}
 
-{% block body -%}
+{% block title_head -%}
+    Show Page
+{% endblock %}
+
+{% block title_page -%}
+    <i class="fa fa-file-o"></i> Show Page
+{% endblock %}
+
+{% block content -%}
     <h1>Page</h1>
 
     <table class="record_properties">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
+                <th>Title</th>
+                <td>{{ entity.title }}</td>
             </tr>
             <tr>
                 <th>Token</th>
@@ -21,17 +29,21 @@
                 <th>Updatedat</th>
                 <td>{{ entity.updatedAt|date('Y-m-d H:i:s') }}</td>
             </tr>
+            <tr>
+                <th>Template</th>
+                <td>{{ entity.template }}</td>
+            </tr>
         </tbody>
     </table>
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('page') }}">
+        <a href="{{ path('pfe_page') }}">
             Back to the list
         </a>
     </li>
     <li>
-        <a href="{{ path('page_edit', { 'token': entity.token }) }}">
+        <a href="{{ path('pfe_page_edit', { 'token': entity.token }) }}">
             Edit
         </a>
     </li>

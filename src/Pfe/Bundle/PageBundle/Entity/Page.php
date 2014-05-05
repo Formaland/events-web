@@ -3,6 +3,9 @@
 namespace Pfe\Bundle\PageBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Gedmo\Mapping\Annotation as Gedmo;
+use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translatable;
 
 /**
  * Page
@@ -12,6 +15,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Page
 {
+    use Translatable;
+
     /**
      * @var integer
      *
@@ -30,18 +35,35 @@ class Page
 
     /**
      * @var \DateTime
-     *
+     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="createdAt", type="datetime", nullable=false)
      */
     private $createdAt;
 
     /**
      * @var \DateTime
-     *
+     * @Gedmo\Timestampable(on="update")
      * @ORM\Column(name="updatedAt", type="datetime", nullable=true)
      */
     private $updatedAt;
 
+    /**
+     * @var \Integer
+     * @ORM\Column(name="template", type="integer", nullable=false)
+     */
+    private $template;
+
+    private $translations;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->translations = new ArrayCollection();
+        $date = new \DateTime();
+        $this->token = base_convert(sha1(uniqid(mt_rand(1, 999) . $date->format('Y-m-d H:i:s'), true)), 16, 36);
+    }
 
     /**
      * Get id
@@ -120,5 +142,21 @@ class Page
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * @param mixed $template
+     */
+    public function setTemplate($template)
+    {
+        $this->template = $template;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTemplate()
+    {
+        return $this->template;
     }
 }

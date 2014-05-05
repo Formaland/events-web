@@ -17,6 +17,22 @@ class MenuController extends Controller {
                 'title' => 'sidebar.dashboard.name',
             ),
             array(
+                'routes' => array('pfe_page_index', 'pfe_page_new', 'pfe_page_edit'),
+                'icon' => 'copy',
+                'class' => 'start',
+                'title' => 'sidebar.page.name',
+                'submenu' => array(
+                    array(
+                        'route' => 'pfe_page_index',
+                        'title' => 'sidebar.page.index'
+                    ),
+                    array(
+                        'route' => 'pfe_page_new',
+                        'title' => 'sidebar.page.new'
+                    ),
+                )
+            ),
+            array(
                 'routes' => array('pfe_web_backend_dashboard'),
                 'route' => 'customer',
                 'icon' => 'user',

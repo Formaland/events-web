@@ -8,6 +8,19 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PageCreate extends AbstractType
 {
+        /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('translations', 'a2lix_translations')
+            ->add('template', 'choice', array(
+                'choices' => array('0' => 'Default', '1' => 'Home', '2' => 'Contact')
+            ))
+        ;
+    }
     
     /**
      * @param OptionsResolverInterface $resolver
