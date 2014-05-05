@@ -1,3 +1,2 @@
-pfe_menu_homepage:
-    pattern:  /
-    defaults: { _controller: PfeMenuBundle:Default:index }
+pfe_menu_bundle_menu:
+    resource: "@PfeMenuBundle/Resources/config/routing/backend/menu.yml"

@@ -1,10 +1,6 @@
 menu:
     pattern:  /
-    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: menu, permanent: true }
-
-menu_index:
-    pattern:  /index
-    defaults: { _controller: "PfeMenuBundle:Menu:index" }
+    defaults: { __controller: "PfeMenuBundle:Menu:index" }
 
 menu_show:
     pattern:  /{token}/show

@@ -10,4 +10,4 @@ pfe_web_frontend:
     resource: "@PfeWebBundle/Resources/config/routing/frontend/main.yml"
     defaults: { host: %host% }
     requirements:
-        host: %host%
+        host:%host%

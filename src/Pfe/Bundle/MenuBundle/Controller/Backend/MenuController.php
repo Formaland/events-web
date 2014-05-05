@@ -1,6 +1,6 @@
 <?php
 
-namespace Pfe\Bundle\MenuBundle\Controller;
+namespace Pfe\Bundle\MenuBundle\Controller\Backend;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -26,7 +26,7 @@ class MenuController extends Controller
 
         $entities = $em->getRepository('PfeMenuBundle:Menu')->findAll();
 
-        return $this->render('PfeMenuBundle:Menu:index.html.twig', array(
+        return $this->render('PfeMenuBundle:Backend/Menu:index.html.twig', array(
             'entities' => $entities,
         ));
     }
@@ -48,7 +48,7 @@ class MenuController extends Controller
             return $this->redirect($this->generateUrl('menu_show', array('token' => $entity->getToken())));
         }
 
-        return $this->render('PfeMenuBundle:Menu:new.html.twig', array(
+        return $this->render('PfeMenuBundle:Backend/Menu:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -82,7 +82,7 @@ class MenuController extends Controller
         $entity = new Menu();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('PfeMenuBundle:Menu:new.html.twig', array(
+        return $this->render('PfeMenuBundle:Backend/Menu:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -104,7 +104,7 @@ class MenuController extends Controller
 
         $deleteForm = $this->createDeleteForm($token);
 
-        return $this->render('PfeMenuBundle:Menu:show.html.twig', array(
+        return $this->render('PfeMenuBundle:Backend/Menu:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
     }
@@ -126,7 +126,7 @@ class MenuController extends Controller
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($token);
 
-        return $this->render('PfeMenuBundle:Menu:edit.html.twig', array(
+        return $this->render('PfeMenuBundle:Backend/Menu:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -175,7 +175,7 @@ class MenuController extends Controller
             return $this->redirect($this->generateUrl('menu_edit', array('token' => $token)));
         }
 
-        return $this->render('PfeMenuBundle:Menu:edit.html.twig', array(
+        return $this->render('PfeMenuBundle:Backend/Menu:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
