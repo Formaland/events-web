@@ -1,6 +1,10 @@
 pfe_web_frontend_homepage:
     pattern:  /
-    defaults: { _controller: PfeWebBundle:Frontend/Page:home  }
+    defaults: { _controller: PfePageBundle:Frontend/Page:home  }
+
+pfe_web_frontend_page:
+    pattern:  /{slug}
+    defaults: { _controller: PfePageBundle:Frontend/Page:show  }
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

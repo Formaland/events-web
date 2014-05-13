@@ -19,6 +19,7 @@ class AppKernel extends Kernel
 
             new Pfe\Bundle\WebBundle\PfeWebBundle(),
             new Pfe\Bundle\CustomerBundle\PfeCustomerBundle(),
+            new Pfe\Bundle\PageBundle\PfePageBundle(),
 
             new FOS\UserBundle\FOSUserBundle(),
             new Ornicar\GravatarBundle\OrnicarGravatarBundle(),

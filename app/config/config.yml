@@ -26,6 +26,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form:
+        resources:
+            - 'PfeWebBundle:Backend/Form:fields.html.twig'
 
 # Assetic Configuration
 assetic:
@@ -81,7 +84,7 @@ a2lix_translation_form:
     locales: [fr, en]
     required_locales: [fr]
     manager_registry: doctrine
-    templating: "A2lixTranslationFormBundle::default.html.twig"
+    templating: "PfeWebBundle:Backend/Form:translation.html.twig"
 
 # FOSUserBundle Configuration
 fos_user:
@@ -96,6 +99,7 @@ fos_user:
     from_email:
         address:        noreply@boulangerielemarquis.com
         sender_name:    Acme Demo App
+
 
 # Gravatar Configuration
 ornicar_gravatar:

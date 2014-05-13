@@ -3,6 +3,10 @@ sidebar:
     name: Tableau de board
   customer:
       name: Gestion des clients
+  page:
+      name: Gestion des pages
+      index: Toute les pages
+      new: Ajouter une page
   user:
     name: Gestion des utilisateurs
     index: Tout les utilisateurs
