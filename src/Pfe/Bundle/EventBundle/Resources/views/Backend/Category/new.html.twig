@@ -1,0 +1,36 @@
+{% extends 'PfeWebBundle:Backend:layout.html.twig' %}
+
+{% block title_head -%}
+New Category
+{% endblock %}
+
+{% block title_page -%}
+<i class="fa fa-plus"></i> New Category
+{% endblock %}
+
+{% block content -%}
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_start(form, { 'attr': {'class': 'form-horizontal' } }) }}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">New Form</h4>
+                    </div>
+                    <div class="panel-body">
+                        {{ form_widget(form) }}
+                    </div>
+                    <div class="panel-footer">
+                        {{ form_widget(form.submit, {'attr': { 'class': 'btn btn-success pull-right' } } ) }}
+                    </div>
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('pfe_event_category') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

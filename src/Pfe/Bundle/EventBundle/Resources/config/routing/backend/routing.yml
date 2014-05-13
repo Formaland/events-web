@@ -1,0 +1,6 @@
+pfe_event_bundle_event:
+    resource: "@PfeEventBundle/Resources/config/routing/backend/event.yml"
+
+pfe_event_bundle_category:
+    resource: "@PfeEventBundle/Resources/config/routing/backend/category.yml"
+    prefix: /category

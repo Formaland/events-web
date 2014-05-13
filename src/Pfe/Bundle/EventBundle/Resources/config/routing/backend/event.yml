@@ -1,0 +1,34 @@
+pfe_event:
+    pattern:  /
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: pfe_event_index, permanent: true }
+
+pfe_event_index:
+    pattern:  /index
+    defaults: { _controller: "PfeEventBundle:Backend/Event:index" }
+
+pfe_event_show:
+    pattern:  /{token}/show
+    defaults: { _controller: "PfeEventBundle:Backend/Event:show" }
+
+pfe_event_new:
+    pattern:  /new
+    defaults: { _controller: "PfeEventBundle:Backend/Event:new" }
+
+pfe_event_create:
+    pattern:  /create
+    defaults: { _controller: "PfeEventBundle:Backend/Event:create" }
+    requirements: { _method: post }
+
+pfe_event_edit:
+    pattern:  /{token}/edit
+    defaults: { _controller: "PfeEventBundle:Backend/Event:edit" }
+
+pfe_event_update:
+    pattern:  /{token}/update
+    defaults: { _controller: "PfeEventBundle:Backend/Event:update" }
+    requirements: { _method: post|put }
+
+pfe_event_delete:
+    pattern:  /{token}/delete
+    defaults: { _controller: "PfeEventBundle:Backend/Event:delete" }
+    requirements: { _method: post|delete }

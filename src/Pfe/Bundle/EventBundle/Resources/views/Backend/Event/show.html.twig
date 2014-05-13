@@ -1,0 +1,33 @@
+{% extends 'PfeWebBundle:Backend:layout.html.twig' %}
+
+{% block title_head -%}
+    List Event
+{% endblock %}
+
+{% block title_page -%}
+    <i class="fa fa-list"></i> {{ 'title.page.show'|trans({}, 'PfePageBundle') }}
+{% endblock %}
+
+{% block content -%}
+    <h1>Event</h1>
+
+    <table class="record_properties">
+        <tbody>
+            {{ entity.title }}
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('pfe_event') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('pfe_event_edit', { 'token': entity.token }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

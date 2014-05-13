@@ -21,7 +21,7 @@
 
         $locale = $this->container->getParameter('locale');
 
-        $entities = $em->getRepository('{{ bundle }}:{{ entity }}')->findAll();
+        $entities = $em->getRepository('{{ bundle }}:{{ entity }}')->findAllByLocale($locale);
 {% endblock method_body %}
 
 {% block method_return %}

@@ -1,0 +1,51 @@
+{% extends 'PfeWebBundle:Backend:layout.html.twig' %}
+
+{% block title_head -%}
+    List Category
+{% endblock %}
+
+{% block title_page -%}
+    <i class="fa fa-list"></i> List Category
+{% endblock %}
+
+{% block content -%}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                                            <div class="pull-right">
+                            <a href="{{ path('pfe_event_category_new') }}" class="btn btn-success"><span class="fa fa-plus"></span> &MediumSpace; Add Category</a>
+                        </div>
+                                        <h3 class="panel-title">List Category</h3>
+                    <p></p>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table" id="table1">
+                            <thead>
+                            <tr>
+                                        <th>Createdat</th>
+                                        <th>Updatedat</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for entity in entities %}
+                            <tr>
+                                        <td>{{ entity.createdAt }}</td>
+                                        <td>{{ entity.updatedAt }}</td>
+                                        <td>    <a href="{{ path('pfe_event_category_show', { 'token': entity.token }) }}">
+                <i class="fa fa-info"></i>
+            </a>    <a href="{{ path('pfe_event_category_edit', { 'token': entity.token }) }}">
+                <i class="fa fa-pencil"></i>
+            </a>                                        </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
