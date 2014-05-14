@@ -11,6 +11,8 @@ sidebar:
       name: Gestion des evenements
       index: Tout les evenements
       new: Ajouter un evenement
+      category:
+          index: Categories
   user:
     name: Gestion des utilisateurs
     index: Tout les utilisateurs
