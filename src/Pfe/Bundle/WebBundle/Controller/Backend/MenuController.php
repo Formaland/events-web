@@ -46,6 +46,10 @@ class MenuController extends Controller {
                         'route' => 'pfe_event_new',
                         'title' => 'sidebar.event.new'
                     ),
+                    array(
+                        'route' => 'pfe_event_category_index',
+                        'title' => 'sidebar.event.category.index'
+                    ),
                 )
             ),
             array(

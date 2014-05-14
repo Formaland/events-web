@@ -17,14 +17,29 @@ class EventEdit extends AbstractType
         $builder
             ->add('translations', 'a2lix_translations')
             ->add('price')
-            ->add('image', 'file')
+            ->add('image', 'file', array(
+                'required' => false
+            ))
             ->add('address')
+            ->add('categories', 'entity', array(
+                'class' => 'PfeEventBundle:Category',
+                'property' => 'id',
+                'multiple' => true
+            ))
             ->add('country' , 'country', array(
                 'preferred_choices' => array('TN'),
             ))
             ->add('city')
-            ->add('startDate')
-            ->add('endDate')
+            ->add('startDate', 'date', array(
+                    'widget' => 'single_text',
+                    'format' => 'dd-MM-yyyy',
+                )
+            )
+            ->add('endDate', 'date', array(
+                    'widget' => 'single_text',
+                    'format' => 'dd-MM-yyyy',
+                )
+            )
             ->add('postalCode')
             ->add('numberPlace')
         ;

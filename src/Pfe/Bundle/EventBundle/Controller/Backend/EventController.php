@@ -2,12 +2,13 @@
 
 namespace Pfe\Bundle\EventBundle\Controller\Backend;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Pfe\Bundle\EventBundle\Entity\Event;
 use Pfe\Bundle\EventBundle\Form\EventCreate;
 use Pfe\Bundle\EventBundle\Form\EventEdit;
+use Pfe\Bundle\EventBundle\Form\EventFilter;
 
 /**
  * Event controller.
@@ -20,18 +21,52 @@ class EventController extends Controller
      * Lists all Event entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
 
+        $form = $this->createFilterForm();
+        $form->handleRequest($request);
+
+        $em = $this->getDoctrine()->getManager();
         $locale = $this->container->getParameter('locale');
 
-        $entities = $em->getRepository('PfeEventBundle:Event')->findAllByLocale($locale);
+        if($form->isValid())
+        {
+            $criteria = $form->getData();
+            $entities = $em->getRepository('PfeEventBundle:Event')->findAllByLocaleAndCriteria($locale, $criteria);
+        }
+        else
+        {
+            $entities = $em->getRepository('PfeEventBundle:Event')->findAllByLocale($locale);
+        }
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $entities,
+            $request->get('page', 1)
+        );
 
         return $this->render('PfeEventBundle:Backend/Event:index.html.twig', array(
-            'entities' => $entities,
+            'pagination' => $pagination,
+            'form' => $form->createView(),
         ));
     }
+
+    /**
+     * Creates a form to filter a Event entity.
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createFilterForm()
+    {
+        $form = $this->createForm(new EventFilter(), null, array(
+            'action' => $this->generateUrl('pfe_event_index'),
+            'method' => 'POST',
+        ));
+
+        return $form;
+    }
+
     /**
      * Creates a new Event entity.
      *

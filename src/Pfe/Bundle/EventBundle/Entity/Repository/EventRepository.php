@@ -24,6 +24,32 @@ class EventRepository extends EntityRepository
         return $query->getQuery()->getResult();
     }
 
+    public function findAllByLocaleAndCriteria($locale, $criteria)
+    {
+        $query = $this->getEntityManager()->createQueryBuilder('p');
+        $query->select('p, pTrans')
+            ->from('PfeEventBundle:Event', 'p')
+            ->innerJoin('p.translations', 'pTrans')
+            ->where('pTrans.locale = :locale')
+            ->setParameter('locale', $locale);
+
+        foreach ($criteria as $field => $value) {
+            if($value){
+                if ($field = 'title' or $field = 'description') {
+                    $query->andWhere($query->expr()->eq('pTrans.'.$field, ':pTrans_'.$field))
+                        ->setParameter('pTrans_'.$field, $value);
+                }
+                else{
+                    $query->andWhere($query->expr()->eq('p.' . $field, ':p_' . $field))
+                        ->setParameter('p_' . $field, $value);
+                }
+
+            }
+        }
+
+        return $query->getQuery()->getResult();
+    }
+
     public function findOneByLocale($token = null, $locale)
     {
         $query = $this->getEntityManager()->createQueryBuilder('p');

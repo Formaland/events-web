@@ -81,7 +81,7 @@ a2lix_i18n_doctrine:
 
 # A2lix translation form Configuration
 a2lix_translation_form:
-    locales: [fr, en]
+    locales: %locales%
     required_locales: [fr]
     manager_registry: doctrine
     templating: "PfeWebBundle:Backend/Form:translation.html.twig"
@@ -100,6 +100,17 @@ fos_user:
         address:        noreply@boulangerielemarquis.com
         sender_name:    Acme Demo App
 
+# KnpLabs Paginator Configuration
+knp_paginator:
+    page_range: 5                      # default page range used in pagination control
+    default_options:
+        page_name: page                # page query parameter name
+        sort_field_name: sort          # sort field query parameter name
+        sort_direction_name: direction # sort direction query parameter name
+        distinct: true                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
+    template:
+        pagination: KnpPaginatorBundle:Pagination:sliding.html.twig     # sliding pagination controls template
+        sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
 
 # Gravatar Configuration
 ornicar_gravatar:
