@@ -1,7 +1,9 @@
 parameters:
-#    pfe_customer.example.class: Pfe\Bundle\CustomerBundle\Example
+    pfe_customer.registration.class: Pfe\Bundle\CustomerBundle\Form\CustomerRegistration
 
 services:
-#    pfe_customer.example:
-#        class: %pfe_customer.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    pfe_customer.registration.form:
+        class: %pfe_customer.registration.class%
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: pfe_customer_registration }

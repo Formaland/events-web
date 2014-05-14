@@ -1,0 +1,18 @@
+customer:
+    first_name: Prènom
+    last_name: Nom
+    civility: Civilité
+    civilitys:
+        mr: Monsieur
+        mmd: Madamme
+        mlle: Mademoiselle
+    birth_date: Date de naissance
+    address: Adresse
+    postal_code: Code Postale
+    city: Ville
+    country: Pays
+    email: Email
+    phone_number: Numèro de Téléphone
+    username: Nom d'utilisateur
+    password: Mot de passe
+    password_confirmation: Mot de passe (Confirmation)
