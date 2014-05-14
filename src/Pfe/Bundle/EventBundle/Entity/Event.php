@@ -122,6 +122,13 @@ class Event
     private $categories;
 
     /**
+     * @var Booking
+     *
+     * @ORM\OneToOne(targetEntity="Pfe\Bundle\BookingBundle\Entity\Booking", mappedBy="event",  cascade={"remove"})
+     */
+    private $booking;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -536,5 +543,28 @@ class Event
     public function getCategories()
     {
         return $this->categories;
+    }
+
+    /**
+     * Set booking
+     *
+     * @param \Pfe\Bundle\BookingBundle\Entity\Booking $booking
+     * @return Event
+     */
+    public function setBooking(\Pfe\Bundle\BookingBundle\Entity\Booking $booking = null)
+    {
+        $this->booking = $booking;
+
+        return $this;
+    }
+
+    /**
+     * Get booking
+     *
+     * @return \Pfe\Bundle\BookingBundle\Entity\Booking 
+     */
+    public function getBooking()
+    {
+        return $this->booking;
     }
 }

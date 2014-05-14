@@ -1,0 +1,232 @@
+<?php
+
+namespace Pfe\Bundle\BookingBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+
+/**
+ * Booking
+ *
+ * @ORM\Table(name="ws_booking")
+ * @ORM\Entity(repositoryClass="Pfe\Bundle\BookingBundle\Entity\Repository\BookingRepository")
+ */
+class Booking
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="token", type="string", nullable=false, unique=true)
+     */
+    private $token;
+
+    /**
+     * @var \DateTime
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(name="createdAt", type="datetime", nullable=false)
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(name="updatedAt", type="datetime", nullable=true)
+     */
+    private $updatedAt;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="number_place", type="integer")
+     */
+    private $numberPlace;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="confirmed", type="boolean")
+     */
+    private $confirmed;
+
+    /**
+     * @var Customer
+     *
+     * @ORM\ManyToOne(targetEntity="Pfe\Bundle\CustomerBundle\Entity\Customer", inversedBy="bookings")
+     * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
+     */
+    private $customer;
+
+    /**
+     * @var Event
+     *
+     * @ORM\OneToOne(targetEntity="Pfe\Bundle\EventBundle\Entity\Event")
+     * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
+     */
+    private $event;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $date = new \DateTime();
+        $this->token = base_convert(sha1(uniqid(mt_rand(1, 999) . $date->format('Y-m-d H:i:s'), true)), 16, 36);
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set token
+     *
+     * @param string $token
+     * @return Booking
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
+    /**
+     * Get token
+     *
+     * @return string 
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return Booking
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return Booking
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set numberPlace
+     *
+     * @param integer $numberPlace
+     * @return Booking
+     */
+    public function setNumberPlace($numberPlace)
+    {
+        $this->numberPlace = $numberPlace;
+
+        return $this;
+    }
+
+    /**
+     * Get numberPlace
+     *
+     * @return integer 
+     */
+    public function getNumberPlace()
+    {
+        return $this->numberPlace;
+    }
+
+    /**
+     * Set confirmed
+     *
+     * @param boolean $confirmed
+     * @return Booking
+     */
+    public function setConfirmed($confirmed)
+    {
+        $this->confirmed = $confirmed;
+
+        return $this;
+    }
+
+    /**
+     * Get confirmed
+     *
+     * @return boolean 
+     */
+    public function getConfirmed()
+    {
+        return $this->confirmed;
+    }
+
+    /**
+     * Set customer
+     *
+     * @param \Pfe\Bundle\CustomerBundle\Entity\Customer $customer
+     * @return Booking
+     */
+    public function setCustomer(\Pfe\Bundle\CustomerBundle\Entity\Customer $customer = null)
+    {
+        $this->customer = $customer;
+
+        return $this;
+    }
+
+    /**
+     * Get customer
+     *
+     * @return \Pfe\Bundle\CustomerBundle\Entity\Customer 
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
+}

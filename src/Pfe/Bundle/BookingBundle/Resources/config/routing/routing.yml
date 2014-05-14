@@ -1,0 +1,3 @@
+pfe_booking_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: PfeBookingBundle:Default:index }

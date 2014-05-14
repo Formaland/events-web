@@ -27,6 +27,7 @@ class AppKernel extends Kernel
             new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
             new A2lix\I18nDoctrineBundle\A2lixI18nDoctrineBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Pfe\Bundle\BookingBundle\PfeBookingBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

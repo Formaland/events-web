@@ -1,5 +1,28 @@
 {% extends "PfeWebBundle:Frontend:layout.html.twig" %}
 
-{% block body %}
-{% include "FOSUserBundle:Registration:register_content.html.twig" %}
+{% block breadcrumb %}
+<div class="header-bottom">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>Registration</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Pages</a></li><li>Invest</li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="col-md-12">
+    {% include "FOSUserBundle:Registration:register_content.html.twig" %}
+</div>
+
 {% endblock %}
