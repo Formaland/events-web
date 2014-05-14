@@ -93,6 +93,8 @@ fos_user:
     user_class: Pfe\Bundle\CustomerBundle\Entity\Customer
     # Ajout de confirmation d'inscription par email
     registration:
+        form:
+            type: pfe_customer_registration
         confirmation:
             enabled: true
     # adresse email de l'emmeteur d'email pour l'inscription et l'oublie de mot de passe etc ...
