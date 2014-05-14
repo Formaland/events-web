@@ -1,5 +1,5 @@
 parameters:
-#    pfe_web.example.class: Pfe\Bundle\WebBundle\Example
+# pfe_web.example.class: Pfe\Bundle\WebBundle\Example
 
 services:
     gedmo.listener.timestampable:

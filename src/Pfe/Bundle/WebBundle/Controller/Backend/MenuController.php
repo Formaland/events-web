@@ -33,6 +33,26 @@ class MenuController extends Controller {
                 )
             ),
             array(
+                'routes' => array('pfe_event_index', 'pfe_event_new', 'pfe_event_edit'),
+                'icon' => 'calendar-o',
+                'class' => 'start',
+                'title' => 'sidebar.event.name',
+                'submenu' => array(
+                    array(
+                        'route' => 'pfe_event_index',
+                        'title' => 'sidebar.event.index'
+                    ),
+                    array(
+                        'route' => 'pfe_event_new',
+                        'title' => 'sidebar.event.new'
+                    ),
+                    array(
+                        'route' => 'pfe_event_category_index',
+                        'title' => 'sidebar.event.category.index'
+                    ),
+                )
+            ),
+            array(
                 'routes' => array('pfe_web_backend_dashboard'),
                 'route' => 'customer',
                 'icon' => 'user',

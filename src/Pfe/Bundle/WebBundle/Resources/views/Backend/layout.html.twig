@@ -9,6 +9,7 @@
         'bundles/pfeweb/backend/css/style.default.css'
         'bundles/pfeweb/backend/css/jquery.gritter.css'
         'bundles/pfeweb/backend/css/bootstrap-wysihtml5.css'
+        'bundles/pfeweb/backend/css/bootstrap-timepicker.min.css'
     %}
         <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
@@ -42,6 +43,7 @@
 
     {% javascripts output='compiled/backend/script.min.js'
         'bundles/pfeweb/backend/js/jquery-1.10.2.min.js'
+        'bundles/pfeweb/backend/js/jquery-ui-1.10.3.min.js'
         'bundles/pfeweb/backend/js/jquery-migrate-1.2.1.min.js'
         'bundles/pfeweb/backend/js/bootstrap.min.js'
         'bundles/pfeweb/backend/js/modernizr.min.js'
@@ -53,6 +55,7 @@
         'bundles/pfeweb/backend/js/jquery.gritter.min.js'
         'bundles/pfeweb/backend/js/wysihtml5-0.3.0.min.js'
         'bundles/pfeweb/backend/js/bootstrap-wysihtml5.js'
+        'bundles/pfeweb/backend/js/bootstrap-timepicker.min.js'
     %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -77,6 +80,8 @@
                 sticky: false
             });
             {% endfor %}
+
+            jQuery('.datepicker').datepicker({ dateFormat: 'dd-mm-yy' });
         });
     </script>
 </body>

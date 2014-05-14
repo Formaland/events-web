@@ -1,5 +1,5 @@
 {% block extends %}
-{{ "{% extends 'PfeWebBundle:layout.html.twig' %}" }}
+{{ "{% extends 'PfeWebBundle:Backend:layout.html.twig' %}" }}
 {% endblock extends %}
 
 {% block body %}
@@ -23,7 +23,7 @@ New {{ entity }}
                         {{ '{{ form_widget(form) }}' }}
                     </div>
                     <div class="panel-footer">
-                        {{ "{{ form_widget(form.submit, {'attr': { 'class': 'btn btn-success pull-right' })" }}
+                        {{ "{{ form_widget(form.submit, {'attr': { 'class': 'btn btn-success pull-right' } } ) }}" }}
                     </div>
                 </div>
             {{ "{{ form_end(form) }}" }}

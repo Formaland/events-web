@@ -9,3 +9,7 @@ pfe_web_backend_customer:
 pfe_page_bundle:
    resource: "@PfePageBundle/Resources/config/routing/backend/routing.yml"
    prefix: /page
+
+pfe_event_bundle:
+   resource: "@PfeEventBundle/Resources/config/routing/backend/routing.yml"
+   prefix: /event

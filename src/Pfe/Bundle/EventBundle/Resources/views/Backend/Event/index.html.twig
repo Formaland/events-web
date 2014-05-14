@@ -1,0 +1,70 @@
+{% extends 'PfeWebBundle:Backend:layout.html.twig' %}
+
+{% block title_head -%}
+    List Event
+{% endblock %}
+
+{% block title_page -%}
+    <i class="fa fa-list"></i> List Event
+{% endblock %}
+
+{% block content -%}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                                            <div class="pull-right">
+                            <a href="{{ path('pfe_event_new') }}" class="btn btn-success"><span class="fa fa-plus"></span> &MediumSpace; Add Event</a>
+                        </div>
+                                        <h3 class="panel-title">List Event</h3>
+                    <p></p>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table" id="table1">
+                            <thead>
+                            <tr>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>Startdate</th>
+                                        <th>Enddate</th>
+                                        <th>Numberplace</th>
+                                <th>Actions</th>
+                            </tr>
+                            {{ form_start(form) }}
+                            <tr>
+                                <th>{{ form_widget(form.title) }}</th>
+                                <th>{{ form_widget(form.description) }}</th>
+                                <th>{{ form_widget(form.startDate) }}</th>
+                                <th>{{ form_widget(form.endDate) }}</th>
+                                <th>{{ form_widget(form.numberPlace) }}</th>
+                                <th><button type="submit" class="btn btn-warning">Filter</button></th>
+                            </tr>
+                            {{ form_end(form) }}
+                            </thead>
+                            <tbody>
+                            {% for entity in pagination %}
+                            <tr>
+                                        <td>{{ entity.title }}</td>
+                                        <td>{{ entity.description }}</td>
+                                        <td>{{ entity.startDate|date() }}</td>
+                                        <td>{{ entity.endDate|date() }}</td>
+                                        <td>{{ entity.numberPlace }}</td>
+                                        <td>    <a href="{{ path('pfe_event_show', { 'token': entity.token }) }}">
+                <i class="fa fa-info"></i>
+            </a>    <a href="{{ path('pfe_event_edit', { 'token': entity.token }) }}">
+                <i class="fa fa-pencil"></i>
+            </a>                                        </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <div class="navigation">
+                            {{ knp_pagination_render(pagination) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

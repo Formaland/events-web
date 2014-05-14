@@ -19,7 +19,9 @@
 {% block method_body %}
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('{{ bundle }}:{{ entity }}')->findOneBy(array('token' => $token));
+        $locale = $this->container->getParameter('locale');
+
+        $entity = $em->getRepository('{{ bundle }}:{{ entity }}')->findOneByLocale($token, $locale);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find {{ entity }} entity.');

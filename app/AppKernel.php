@@ -20,15 +20,17 @@ class AppKernel extends Kernel
             new Pfe\Bundle\WebBundle\PfeWebBundle(),
             new Pfe\Bundle\CustomerBundle\PfeCustomerBundle(),
             new Pfe\Bundle\PageBundle\PfePageBundle(),
+            new Pfe\Bundle\EventBundle\PfeEventBundle(),
 
             new FOS\UserBundle\FOSUserBundle(),
             new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
-            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
             new A2lix\I18nDoctrineBundle\A2lixI18nDoctrineBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+            $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
             $bundles[] = new Ws\Bundle\GeneratorBundle\WsGeneratorBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
