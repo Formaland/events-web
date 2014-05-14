@@ -1,0 +1,71 @@
+<footer>
+
+    <div class="footer-top">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-6 col-md-3">
+                    <h4>About Company</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, provident quas accusamus deleniti velit magni necessitatibus quis eum dolorum error. Rem, maxime, et consequuntur sint provident unde similique. Eos, laudantium!</p>
+                    <address>
+                        <i class="icon-address"></i>Address 123, Country <br />
+                        <i class="icon-phone"></i>(555) 415 5846<br />
+                        <i class="icon-mail"></i><a href="#">email@company.com</a> <br />
+                    </address>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <h4>Contact Information</h4>
+                    <address>
+                        <i class="icon-phone"></i>Phone: +555 5439543 <br />
+                        <i class="icon-phone"></i>Phone: +555 5439543 <br />
+                    </address>
+
+                    <address>
+                        <i class="icon-address"></i>Address 543 Street, Los Angeles <br />
+                        <i class="icon-mail"></i><a href="#">email@company.com</a> <br />
+                        <i class="icon-monitor"></i><a href="#">www.company.com</a> <br />
+                    </address>
+                </div>
+                <div class="clearfix visible-sm"></div>
+                <div class="col-sm-6 col-md-3">
+                    <h4>Newsletter sing up</h4>
+                    <form class="form-suscribe" role="form">
+                        <div class="form-group">
+                            <label for="newsletter-name" class="sr-only">Enter your name</label>
+                            <input type="text" class="form-control" id="newsletter-name" placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="newsletter-email" class="sr-only">Enter your e-mail</label>
+                            <input type="email" class="form-control" id="newsletter-email" placeholder="Enter your e-mail">
+                        </div>
+
+                        <button type="submit" class="btn btn-default"><i class="icon-forward"></i>Suscribe</button>
+                    </form>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <h4>Come to visit us</h4>
+                    <div class="map" id="map"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer-bottom">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-7 col-lg-8">
+
+                    {% render controller("PfeWebBundle:Frontend/Menu:footer") %}
+
+                </div>
+                <div class="col-md-5 col-lg-4 copy">
+                    <p>Copyright - <a href="#">Privacy Policy</a> - <strong>Company Name</strong> <a href="#" class="to-top"><i class="icon-up-circled"></i></a></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</footer>

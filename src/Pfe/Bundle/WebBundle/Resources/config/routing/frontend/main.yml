@@ -2,10 +2,6 @@ pfe_web_frontend_homepage:
     pattern:  /
     defaults: { _controller: PfePageBundle:Frontend/Page:home  }
 
-pfe_web_frontend_page:
-    pattern:  /{slug}
-    defaults: { _controller: PfePageBundle:Frontend/Page:show  }
-
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
@@ -24,3 +20,7 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
+
+pfe_web_frontend_page:
+    pattern:  /{slug}
+    defaults: { _controller: PfePageBundle:Frontend/Page:show  }

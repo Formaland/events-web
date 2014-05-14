@@ -75,5 +75,4 @@ class CategoryTranslation implements OneLocaleInterface
     {
         return $this->description;
     }
-
 }

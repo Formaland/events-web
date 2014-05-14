@@ -66,6 +66,14 @@ class Category
     }
 
     /**
+     * ToString
+     */
+    public function __toString()
+    {
+        return $this->getTranslations();
+    }
+
+    /**
      * Get id
      *
      * @return integer 
@@ -145,48 +153,35 @@ class Category
     }
 
     /**
-     * Set title
+     * Add events
      *
-     * @param string $title
+     * @param \Pfe\Bundle\EventBundle\Entity\Event $events
      * @return Category
      */
-    public function setTitle($title)
+    public function addEvent(\Pfe\Bundle\EventBundle\Entity\Event $events)
     {
-        $this->title = $title;
+        $this->events[] = $events;
 
         return $this;
     }
 
     /**
-     * Get title
+     * Remove events
      *
-     * @return string 
+     * @param \Pfe\Bundle\EventBundle\Entity\Event $events
      */
-    public function getTitle()
+    public function removeEvent(\Pfe\Bundle\EventBundle\Entity\Event $events)
     {
-        return $this->title;
+        $this->events->removeElement($events);
     }
 
     /**
-     * Set description
+     * Get events
      *
-     * @param string $description
-     * @return Category
+     * @return \Doctrine\Common\Collections\Collection 
      */
-    public function setDescription($description)
+    public function getEvents()
     {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getDescription()
-    {
-        return $this->description;
+        return $this->events;
     }
 }

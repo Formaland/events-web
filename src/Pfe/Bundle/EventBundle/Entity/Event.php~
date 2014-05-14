@@ -62,7 +62,7 @@ class Event
     /**
      * @var string
      *
-     * @ORM\Column(name="image", type="string", length=255)
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
      */
     private $image;
 
@@ -120,6 +120,13 @@ class Event
     * @ORM\JoinTable(name="pfe_event_has_categories")
     */
     private $categories;
+
+    /**
+     * @var Booking
+     *
+     * @ORM\OneToOne(targetEntity="Pfe\Bundle\BookingBundle\Entity\Booking", mappedBy="event",  cascade={"remove"})
+     */
+    private $booking;
 
     /**
      * Constructor
@@ -504,4 +511,37 @@ class Event
         }
     }
     /*     * ***********   END UPLOAD FILE   *********** */
+
+    /**
+     * Add categories
+     *
+     * @param \Pfe\Bundle\EventBundle\Entity\Category $categories
+     * @return Event
+     */
+    public function addCategory(\Pfe\Bundle\EventBundle\Entity\Category $categories)
+    {
+        $this->categories[] = $categories;
+
+        return $this;
+    }
+
+    /**
+     * Remove categories
+     *
+     * @param \Pfe\Bundle\EventBundle\Entity\Category $categories
+     */
+    public function removeCategory(\Pfe\Bundle\EventBundle\Entity\Category $categories)
+    {
+        $this->categories->removeElement($categories);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
 }
