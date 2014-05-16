@@ -1,9 +1,13 @@
 pfe_web_frontend_homepage:
-    pattern:  /
-    defaults: { _controller: PfePageBundle:Frontend/Page:home  }
+    pattern:  /{locale}
+    defaults: { _controller: PfePageBundle:Frontend/Page:home, locale: %locale% }
 
 fos_user_security:
-    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    resource: "@PfeCustomerBundle/Resources/config/routing/frontend/security.yml"
+
+pfe_web_frontend_page:
+    pattern:  /{locale}/{slug}
+    defaults: { _controller: PfePageBundle:Frontend/Page:home, locale: %locale% }
 
 fos_user_profile:
     resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
@@ -20,7 +24,3 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
-
-pfe_web_frontend_page:
-    pattern:  /{slug}
-    defaults: { _controller: PfePageBundle:Frontend/Page:show  }
