@@ -16,13 +16,15 @@ class PageController extends Controller
      * Home Page entity.
      *
      */
-    public function homeAction()
+    public function homeAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $locale = $this->container->getParameter('locale');
+        $entity = $em->getRepository('PfePageBundle:Page')->findHome($request->getLocale());
 
-        $entity = $em->getRepository('PfePageBundle:Page')->findHome($locale);
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Page entity.');
+        }
 
         return $this->render('PfePageBundle:Frontend/Page:home.html.twig', array(
             'entity' => $entity,
@@ -33,10 +35,11 @@ class PageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $slug = $request->get('slug');
-        $locale = $this->container->getParameter('locale');
+        $entity = $em->getRepository('PfePageBundle:Page')->findOneByLocaleAndSlug($request->getLocale(), $request->get('slug'));
 
-        $entity = $em->getRepository('PfePageBundle:Page')->findOneByLocaleAndSlug($locale, $slug);
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Page entity.');
+        }
 
         if($entity->getTemplate() == 0)
         {

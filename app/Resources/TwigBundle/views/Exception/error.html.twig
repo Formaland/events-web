@@ -1,0 +1,5 @@
+{% if(app.request.host = host_backend) %}
+    {% render(controller("PfeWebBundle:Backend/Error:notFound")) %}
+{% elseif(app.request.host = host) %}
+    {% extends '' %}
+{% endif %}

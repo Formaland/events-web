@@ -26,6 +26,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        host: %host%
+        host_backend: %host_backend%
     form:
         resources:
             - 'PfeWebBundle:Backend/Form:fields.html.twig'

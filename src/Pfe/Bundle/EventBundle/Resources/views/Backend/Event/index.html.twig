@@ -45,7 +45,7 @@
                             <tbody>
                             {% for entity in pagination %}
                             <tr>
-                                        <td>{{ entity.title }}</td>
+                                        <td><img src="{{ asset(entity.webPath) }}" /></td>
                                         <td>{{ entity.description }}</td>
                                         <td>{{ entity.startDate|date() }}</td>
                                         <td>{{ entity.endDate|date() }}</td>

@@ -5,13 +5,9 @@
                     {% if item.icon is defined %}
                         <i class="fa fa-{{ item.icon }}"></i>
                     {% endif %}
-                    <span class="title">
+                    <span>
                         {{ item.title|trans({}, 'PfeWebBundleBackend') }}
                     </span>
-                        <span class="selected"></span>
-                    {% if item.submenu is defined %}
-                        <span class="arrow  open"></span>
-                    {% endif %}
                 </a>
                 {% if item.submenu is defined %}
                 <ul class="children">
@@ -21,7 +17,7 @@
                            {% if subitem.icon is defined %}
                                <i class="fa fa-{{ subitem.icon }}"></i>
                            {% endif %}
-                           <span class="title">
+                           <span>
                                {{ subitem.title|trans({}, 'PfeWebBundleBackend') }}
                            </span>
                        </a>
