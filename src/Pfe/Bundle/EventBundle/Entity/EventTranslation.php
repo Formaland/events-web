@@ -33,8 +33,10 @@ class EventTranslation implements OneLocaleInterface
     private $description;
 
     /**
+     * @var string
+     *
      * @Gedmo\Slug(fields={"title"})
-     * @ORM\Column(name="slug", unique=true)
+     * @ORM\Column(name="slug", type="string", unique=true)
      */
     private $slug;
 
