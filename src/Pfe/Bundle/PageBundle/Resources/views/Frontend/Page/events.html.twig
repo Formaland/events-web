@@ -1,0 +1,108 @@
+{% extends 'PfeWebBundle:Frontend:layout.html.twig' %}
+
+{% block title_page %}
+    {{ page.title }}
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="searchby boxes">
+                <form class="form-inline pull-left">
+                    <h6>Search By:</h6>
+
+                    <div class="form-group">
+                        <label for="qs-operation" class="sr-only">Operation</label>
+                        <select class="form-control" id="qs-operation">
+                            <option>Operation</option>
+                            <option>Operation 1</option>
+                            <option>Operation 2</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="qs-property-type" class="sr-only">Property Type</label>
+                        <select class="form-control" id="qs-property-type">
+                            <option>Property Type</option>
+                            <option>Type 1</option>
+                            <option>Type 2</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="qs-location" class="sr-only">City</label>
+                        <select class="form-control" id="qs-location">
+                            <option>City</option>
+                            <option>City 1</option>
+                            <option>City 2</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="qs-price" class="sr-only">Price</label>
+                        <select class="form-control" id="qs-price">
+                            <option>Price</option>
+                            <option>Price 1</option>
+                            <option>Price 2</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-search">Most Popular</button>
+                </form>
+                <div class="clearfix visible-xs"></div>
+                <div class="pull-right">
+                    <a href="#" class="btn btn-icon"><i class="icon-layout"></i></a>
+                    <a href="#" class="btn btn-icon"><i class="icon-list"></i></a>
+                    <a href="#" class="btn btn-icon"><i class="icon-menu"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+    <div class="col-md-12 property-details big">
+        {% for event in pagination %}
+            <div class="property-details-item">
+                <figure class="item-thumbnail">
+                    {% if(event.webPath) %}
+                        <img src="{{ asset(event.webPath)|apply_filter('event_thumb') }}" alt="{{ event.title }}">
+                    {% else %}
+                        <img src="{{ asset('bundles/pfeweb/frontend/img/houses/popular-big04.jpg')|apply_filter('event_thumb') }}" alt="{{ event.title }}">
+                    {% endif %}
+                    <span class="overthumb"></span>
+                    <div class="icons"><a href="#"><i class="icon-plus"></i></a></div>
+                </figure>
+
+                <ul class="features">
+                    <li><span class="price">{{ event.price }}{{ ' TND' }}</span></li>
+                    <li><i class="icon-users"></i>{{ event.numberPlace }}</li>
+                    <li><i class="icon-calendar"></i>{{ event.startDate|date() }}</li>
+                    <li>
+                        <a class="btn btn-details" href="{{ path('pfe_frontend_event_show', { 'token': event.token }) }}">Details</a>
+                    </li>
+                </ul>
+
+                <h5>{{ event.title }}</h5>
+
+                <p class="subtitle"><i class="icon-location"></i> {{ event.city }}, {{ event.postalCode }}, {{ event.country }}</p>
+
+                <p>{{ event.description }}</p>
+            </div>
+        {% endfor %}
+
+        <div class="clearfix"></div>
+        <ul class="pagination">
+            <li><a href="#"><i class="icon-left-open"></i></a></li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">...</a></li>
+            <li><a href="#">7</a></li>
+            <li><a href="#">8</a></li>
+            <li><a href="#">8</a></li>
+            <li><a href="#"><i class="icon-right-open"></i></a></li>
+        </ul>
+    </div>
+    </div>
+    {{ page.content|raw }}
+    <br>
+
+{% endblock %}

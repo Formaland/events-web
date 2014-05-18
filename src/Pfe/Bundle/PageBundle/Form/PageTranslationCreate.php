@@ -14,7 +14,8 @@ class PageTranslationCreate extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('title')
+        $builder
+            ->add('title')
             ->add('content')
         ;
     }

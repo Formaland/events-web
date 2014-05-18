@@ -1360,14 +1360,17 @@ aside .textwidget img {
   text-indent: 50px;
   width: 16px;
 }
-.lang li .spanish {
-  background-image: url("../img/lang/ico-es.gif");
+.lang li .es {
+  background-image: url("../img/flags/es.png");
 }
-.lang li .italian {
-  background-image: url("../img/lang/ico-it.gif");
+.lang li .fr {
+  background-image: url("../img/flags/fr.png");
 }
-.lang li .english {
-  background-image: url("../img/lang/ico-en.gif");
+.lang li .it {
+  background-image: url("../img/flags/it.png");
+}
+.lang li .en {
+  background-image: url("../img/flags/gb.png");
 }
 /**
  *

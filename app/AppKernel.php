@@ -21,13 +21,14 @@ class AppKernel extends Kernel
             new Pfe\Bundle\CustomerBundle\PfeCustomerBundle(),
             new Pfe\Bundle\PageBundle\PfePageBundle(),
             new Pfe\Bundle\EventBundle\PfeEventBundle(),
+            new Pfe\Bundle\BookingBundle\PfeBookingBundle(),
 
             new FOS\UserBundle\FOSUserBundle(),
             new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
             new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
             new A2lix\I18nDoctrineBundle\A2lixI18nDoctrineBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
-            new Pfe\Bundle\BookingBundle\PfeBookingBundle(),
+            new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

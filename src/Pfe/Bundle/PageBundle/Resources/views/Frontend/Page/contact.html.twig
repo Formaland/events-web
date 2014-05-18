@@ -1,9 +1,10 @@
 {% extends 'PfeWebBundle:Frontend:layout.html.twig' %}
 
-{% block body %}
-    <p>contact</p>
-    {{ entity.content|raw }}
-
+{% block title_page %}
+    {{ page.title }}
+{% endblock %}
+{% block content %}
+    {{ page.content|raw }}
     <form>
         <input type="text">
         <textarea></textarea>

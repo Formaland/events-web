@@ -24,6 +24,7 @@
                         <table class="table" id="table1">
                             <thead>
                             <tr>
+                                        <th>Image</th>
                                         <th>Title</th>
                                         <th>Description</th>
                                         <th>Startdate</th>
@@ -33,6 +34,7 @@
                             </tr>
                             {{ form_start(form) }}
                             <tr>
+                                <th></th>
                                 <th>{{ form_widget(form.title) }}</th>
                                 <th>{{ form_widget(form.description) }}</th>
                                 <th>{{ form_widget(form.startDate) }}</th>
@@ -45,7 +47,12 @@
                             <tbody>
                             {% for entity in pagination %}
                             <tr>
-                                        <td><img src="{{ asset(entity.webPath) }}" /></td>
+                                        <td>
+                                            {% if(entity.webPath) %}
+                                                <img src="{{ asset(entity.webPath)|apply_filter('event_thumb') }}" />
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ entity.title }}</td>
                                         <td>{{ entity.description }}</td>
                                         <td>{{ entity.startDate|date() }}</td>
                                         <td>{{ entity.endDate|date() }}</td>

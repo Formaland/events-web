@@ -27,7 +27,8 @@
         "a2lix/translation-form-bundle": "dev-master",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "ornicar/gravatar-bundle" : "dev-master",
-        "knplabs/knp-paginator-bundle": "~2.4"
+        "knplabs/knp-paginator-bundle": "~2.4",
+        "avalanche123/imagine-bundle": "v2.1"
     },
     "scripts": {
         "post-install-cmd": [

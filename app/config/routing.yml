@@ -1,2 +1,6 @@
 pfe_events_web:
     resource: "@PfeWebBundle/Resources/config/routing.yml"
+
+_imagine:
+    resource: .
+    type:     imagine

@@ -1,0 +1,5 @@
+pfe_booking_backend:
+    resource: "@PfeBookingBundle/Resources/config/routing/backend/routing.yml"
+
+pfe_booking_frontend:
+    resource: "@PfeBookingBundle/Resources/config/routing/frontend/routing.yml"

@@ -9,8 +9,12 @@ class MenuController extends Controller {
 
     public function mainAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+
+        $links = $em->getRepository('PfePageBundle:Page')->findAllByLocale($request->getLocale());
 
         return $this->render('PfeWebBundle:Frontend/Menu:main.html.twig', array(
+            'links' => $links,
             'route' => $request->get('_route')
         ));
     }

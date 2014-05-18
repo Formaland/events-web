@@ -3,7 +3,11 @@
 namespace Pfe\Bundle\PageBundle\Controller\Frontend;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+use Pfe\Bundle\BookingBundle\Entity\Booking;
+use Pfe\Bundle\BookingBundle\Form\BookingCreate;
 
 /**
  * Page controller.
@@ -35,28 +39,43 @@ class PageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('PfePageBundle:Page')->findOneByLocaleAndSlug($request->getLocale(), $request->get('slug'));
+        $page = $em->getRepository('PfePageBundle:Page')->findOneByLocaleAndSlug($request->getLocale(), $request->get('slug'));
 
-        if (!$entity) {
+        if (!$page) {
             throw $this->createNotFoundException('Unable to find Page entity.');
         }
 
-        if($entity->getTemplate() == 0)
+        if($page->getTemplate() == 0)
         {
             return $this->render('PfePageBundle:Frontend/Page:default.html.twig', array(
-                'entity' => $entity,
+                'page' => $page,
             ));
         }
-        elseif($entity->getTemplate() == 1)
+        elseif($page->getTemplate() == 1)
         {
             return $this->render('PfePageBundle:Frontend/Page:home.html.twig', array(
-                'entity' => $entity,
+                'page' => $page,
             ));
         }
-        elseif($entity->getTemplate() == 2)
+        elseif($page->getTemplate() == 2)
         {
             return $this->render('PfePageBundle:Frontend/Page:contact.html.twig', array(
-                'entity' => $entity,
+                'page' => $page,
+            ));
+        }
+        elseif($page->getTemplate() == 3)
+        {
+            $events = $em->getRepository('PfeEventBundle:Event')->findAllByLocale($request->getLocale());
+
+            $paginator = $this->get('knp_paginator');
+            $pagination = $paginator->paginate(
+                $events,
+                $request->get('page', 1)
+            );
+
+            return $this->render('PfePageBundle:Frontend/Page:events.html.twig', array(
+                'pagination' => $pagination,
+                'page' => $page,
             ));
         }
     }

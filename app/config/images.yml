@@ -1,0 +1,8 @@
+avalanche_imagine:
+    filters:
+        event_thumb_backend:
+            type:    thumbnail
+            options: { size: [84, 84], mode: outbound, quality: 80 }
+        event_thumb:
+            type:    thumbnail
+            options: { size: [270, 200], mode: outbound, quality: 80 }

@@ -1,4 +1,5 @@
 imports:
+    - { resource: images.yml }
     - { resource: project.yml }
     - { resource: parameters.yml }
     - { resource: security.yml }
@@ -29,6 +30,7 @@ twig:
     globals:
         host: %host%
         host_backend: %host_backend%
+        locales: %locales%
     form:
         resources:
             - 'PfeWebBundle:Backend/Form:fields.html.twig'

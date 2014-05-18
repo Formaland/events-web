@@ -1,0 +1,4 @@
+pfe_frontend_booking_create:
+    pattern:  /events/{token}/register
+    defaults: { _controller: "PfeBookingBundle:Frontend/Booking:new" }
+    requirements: { _method: post }

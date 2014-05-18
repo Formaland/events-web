@@ -1,5 +1,5 @@
 <ul class="nav navbar-nav">
-
-    <li class="active"><a href="{{ path('pfe_web_frontend_homepage') }}">Home</a></li>
-
+    {% for link in links  %}
+        <li class=><a href="{{ path('pfe_web_frontend_page', {'slug': link.slug }) }}">{{ link.title }}</a></li>{{ link.template }}
+    {% endfor %}
 </ul>

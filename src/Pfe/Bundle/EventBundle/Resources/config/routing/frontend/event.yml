@@ -1,0 +1,3 @@
+pfe_frontend_event_show:
+    pattern: /{locale}/{template}/{slug}
+    defaults: { _controller: PfeEventBundle:Frontend/Event:show, locale: %locale% }

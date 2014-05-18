@@ -8,7 +8,6 @@ class PageController extends Controller
 {
     public function homeAction()
     {
-
         return $this->render('PfeWebBundle:Frontend/Page:home.html.twig');
     }
 }

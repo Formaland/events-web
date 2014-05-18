@@ -1,44 +1,29 @@
 <header>
-
     <div class="header-top">
         <div class="container">
             <div class="row">
                 <div class="col-md-5 contact">
-                    <a href="#"><i class="icon-mail"></i>info@company.com</a>
-                    <a href="#"><i class="icon-phone"></i>+151 15154 4554</a>
+                    {% if app.user is empty %}
+                        <a href="{{ path('customer_security_login_locale') }}"><i class="icon-mail"></i>Login</a> | <a href="{{ path('fos_user_registration_register') }}"><i class="icon-phone"></i>Register</a>
+                    {% endif %}
                 </div>
                 <div class="col-md-7 right">
                     <ul class="lang">
-                        <li><a href="#" class="spanish">Spanish</a></li>
-                        <li><a href="#" class="italian">Italian</a></li>
-                        <li><a href="#" class="english">English</a></li>
+                        {% for locale in locales %}
+                            <li><a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'locale' : locale})) }}" class="{{ locale }}">{{ locale }}</a></li>
+                        {% endfor %}
                     </ul>
-                    <ul class="social">
-                        <li><a href="#" title="Vimeo"><i class="icon-vimeo"></i></a></li>
-                        <li><a href="#" title="Facebook"><i class="icon-facebook"></i></a></li>
-                        <li><a href="#" title="Pinterest"><i class="icon-pinterest"></i></a></li>
-                        <li><a href="#" title="Skype"><i class="icon-skype"></i></a></li>
-                        <li><a href="#" title="Google+"><i class="icon-gplus"></i></a></li>
-                        <li><a href="#" title="Linkedin"><i class="icon-linkedin"></i></a></li>
-                        <li><a href="#" title="Twitter"><i class="icon-twitter"></i></a></li>
-                    </ul>
-                    <form class="form-inline form-search" role="form">
-                        <div class="form-group">
-                            <label class="sr-only" for="search">Search</label>
-                            <i class="icon-search"></i>
-                            <input type="text" class="form-control" id="search" placeholder="Search here...">
+                    {% if app.user %}
+                        <div class="options dropdown">
+                            <a data-toggle="dropdown" href="#" id="dLabel"><i class="icon-user"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <li><a href="javascript:void(0)">{{ app.user.firstName }} {{ app.user.lastName }}</a></li>
+                                <li><a href=""><i class="icon-user"></i> Profile</a></li>
+                                <li><a href=""><i class="icon-help"></i> Change password</a></li>
+                                <li><a href=""><i class="icon-reply"></i> Logout</a></li>
+                            </ul>
                         </div>
-                        <button type="submit" class="btn btn-default">Sign in</button>
-                    </form>
-                    <div class="options dropdown">
-                        <a data-toggle="dropdown" href="#" id="dLabel"><i class="icon-cog"></i></a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                            <li><a href="#"><i class="icon-cog"></i> Settings</a></li>
-                            <li><a href="#"><i class="icon-user"></i> Edit Profile</a></li>
-                            <li><a href="#"><i class="icon-help"></i> Help</a></li>
-                            <li><a href="#"><i class="icon-reply"></i> Logout</a></li>
-                        </ul>
-                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -66,7 +51,18 @@
         </div>
     </nav>
 
-    {% block breadcrumb %}
-    {% endblock %}
+    {% if app.request.get('_route') != 'pfe_web_frontend_homepage'%}
+        <div class="header-bottom">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1>Login</h1>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    {% endif %}
 
 </header>

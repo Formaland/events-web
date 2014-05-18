@@ -1,0 +1,56 @@
+{% extends 'PfeWebBundle:Backend:layout.html.twig' %}
+
+{% block title_head -%}
+    List Booking
+{% endblock %}
+
+{% block title_page -%}
+    <i class="fa fa-list"></i> {{ 'title.page.show'|trans({}, 'PfePageBundle') }}
+{% endblock %}
+
+{% block content -%}
+    <h1>Booking</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Token</th>
+                <td>{{ entity.token }}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{{ entity.updatedAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Numberplace</th>
+                <td>{{ entity.numberPlace }}</td>
+            </tr>
+            <tr>
+                <th>Confirmed</th>
+                <td>{{ entity.confirmed }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('booking') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('booking_edit', { 'token': entity.token }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

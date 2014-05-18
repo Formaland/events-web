@@ -3,6 +3,7 @@
 namespace Pfe\Bundle\EventBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use A2lix\I18nDoctrineBundle\Doctrine\Interfaces\OneLocaleInterface;
 use A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
 
@@ -30,6 +31,12 @@ class EventTranslation implements OneLocaleInterface
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
+
+    /**
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(name="slug", unique=true)
+     */
+    private $slug;
 
     /**
      * @param string $title
@@ -61,5 +68,21 @@ class EventTranslation implements OneLocaleInterface
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * @param mixed $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

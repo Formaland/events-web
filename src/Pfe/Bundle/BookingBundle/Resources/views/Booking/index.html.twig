@@ -1,0 +1,55 @@
+{% extends 'PfeWebBundle:Backend:layout.html.twig' %}
+
+{% block title_head -%}
+    List Booking
+{% endblock %}
+
+{% block title_page -%}
+    <i class="fa fa-list"></i> List Booking
+{% endblock %}
+
+{% block content -%}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                                            <div class="pull-right">
+                            <a href="{{ path('booking_new') }}" class="btn btn-success"><span class="fa fa-plus"></span> &MediumSpace; Add Booking</a>
+                        </div>
+                                        <h3 class="panel-title">List Booking</h3>
+                    <p></p>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table" id="table1">
+                            <thead>
+                            <tr>
+                                        <th>Createdat</th>
+                                        <th>Updatedat</th>
+                                        <th>Numberplace</th>
+                                        <th>Confirmed</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for entity in entities %}
+                            <tr>
+                                        <td>{{ entity.createdAt }}</td>
+                                        <td>{{ entity.updatedAt }}</td>
+                                        <td>{{ entity.numberPlace }}</td>
+                                        <td>{{ entity.confirmed }}</td>
+                                        <td>    <a href="{{ path('booking_show', { 'token': entity.token }) }}">
+                <i class="fa fa-info"></i>
+            </a>    <a href="{{ path('booking_edit', { 'token': entity.token }) }}">
+                <i class="fa fa-pencil"></i>
+            </a>                                        </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

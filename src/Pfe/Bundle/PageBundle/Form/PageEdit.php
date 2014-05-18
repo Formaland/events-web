@@ -15,7 +15,10 @@ class PageEdit extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('template')
+            ->add('translations', 'a2lix_translations')
+            ->add('template', 'choice', array(
+                'choices' => array('0' => 'Default', '1' => 'Home', '2' => 'Contact')
+            ))
         ;
     }
     

@@ -43,4 +43,4 @@ class LoadEventData implements FixtureInterface {
         }
     }
 
-} 
+}

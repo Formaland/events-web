@@ -1,0 +1,34 @@
+booking:
+    pattern:  /
+    defaults: { _controller: FrameworkBundle:Redirect:redirect, route: booking_index, permanent: true }
+
+booking_index:
+    pattern:  /index
+    defaults: { _controller: "PfeBookingBundle:Booking:index" }
+
+booking_show:
+    pattern:  /{token}/show
+    defaults: { _controller: "PfeBookingBundle:Booking:show" }
+
+booking_new:
+    pattern:  /new
+    defaults: { _controller: "PfeBookingBundle:Booking:new" }
+
+booking_create:
+    pattern:  /create
+    defaults: { _controller: "PfeBookingBundle:Booking:create" }
+    requirements: { _method: post }
+
+booking_edit:
+    pattern:  /{token}/edit
+    defaults: { _controller: "PfeBookingBundle:Booking:edit" }
+
+booking_update:
+    pattern:  /{token}/update
+    defaults: { _controller: "PfeBookingBundle:Booking:update" }
+    requirements: { _method: post|put }
+
+booking_delete:
+    pattern:  /{token}/delete
+    defaults: { _controller: "PfeBookingBundle:Booking:delete" }
+    requirements: { _method: post|delete }

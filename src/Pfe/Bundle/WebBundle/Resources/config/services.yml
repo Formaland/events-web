@@ -1,7 +1,14 @@
 parameters:
-# pfe_web.example.class: Pfe\Bundle\WebBundle\Example
+    pfe_locale_listener.class: Pfe\Bundle\WebBundle\Listener\LocaleListener
 
 services:
+    ws_locale_listener:
+        class: %pfe_locale_listener.class%
+        arguments: ["%kernel.default_locale%"]
+        calls:
+            - [ setContainer, [@service_container] ]
+        tags:
+            - { name: kernel.event_subscriber }
     gedmo.listener.timestampable:
         class: Gedmo\Timestampable\TimestampableListener
         tags:

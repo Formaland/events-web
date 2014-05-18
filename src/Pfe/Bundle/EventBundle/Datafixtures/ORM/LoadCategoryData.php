@@ -11,6 +11,7 @@ class LoadCategoryData implements FixtureInterface {
 
     public function load(ObjectManager $manager)
     {
+
         $locales = array('fr', 'en');
         $categories_translation = array();
 
