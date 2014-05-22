@@ -74,7 +74,7 @@
                     <li><i class="icon-users"></i>{{ event.numberPlace }}</li>
                     <li><i class="icon-calendar"></i>{{ event.startDate|date() }}</li>
                     <li>
-                        <a class="btn btn-details" href="{{ path('pfe_frontend_event_show', { 'token': event.token }) }}">Details</a>
+                        <a class="btn btn-details" href="{{ path('pfe_frontend_event_show', { 'slug': event.slug }) }}">Details</a>
                     </li>
                 </ul>
 

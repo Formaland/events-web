@@ -124,3 +124,7 @@ ornicar_gravatar:
   rating: g
   size: 288
   default: mm
+
+# Gravatar Configuration
+jms_payment_core:
+    secret: someS3cretP4ssw0rd

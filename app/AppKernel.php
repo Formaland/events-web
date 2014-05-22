@@ -29,6 +29,7 @@ class AppKernel extends Kernel
             new A2lix\I18nDoctrineBundle\A2lixI18nDoctrineBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
+            new JMS\Payment\CoreBundle\JMSPaymentCoreBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

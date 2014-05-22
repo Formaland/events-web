@@ -125,6 +125,7 @@ class Customer extends BaseUser
 
         $date = new \DateTime();
         $this->token = base_convert(sha1(uniqid(mt_rand(1, 999) . $date->format('Y-m-d H:i:s'), true)), 16, 36);
+        $this->roles = array('ROLE_CUSTOMER');
     }
 
     /**

@@ -1,4 +1,8 @@
 pfe_frontend_booking_create:
-    pattern:  /events/{token}/register
-    defaults: { _controller: "PfeBookingBundle:Frontend/Booking:new" }
+    pattern:  /booking/event/{slug}
+    defaults: { _controller: "PfeBookingBundle:Frontend/Booking:new", locale: %locale% }
     requirements: { _method: post }
+
+pfe_frontend_booking_payment:
+    pattern:  /booking/payment/{token}
+    defaults: { _controller: "PfeBookingBundle:Frontend/Booking:payment" }

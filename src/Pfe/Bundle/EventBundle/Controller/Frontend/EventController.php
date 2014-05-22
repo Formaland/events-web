@@ -24,13 +24,13 @@ class EventController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('PfeEventBundle:Event')->findOneByLocale($request->get('token'), $request->getLocale());
+        $entity = $em->getRepository('PfeEventBundle:Event')->findOneBySlugAndLocale($request->get('slug'), $request->getLocale());
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Event entity.');
         }
 
-        $bookingForm = $this->createBookingForm($request->get('token'));
+        $bookingForm = $this->createBookingForm($entity->getSlug());
 
         return $this->render('PfeEventBundle:Frontend/Event:show.html.twig', array(
             'entity'      => $entity,
@@ -44,10 +44,10 @@ class EventController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createBookingForm(Booking $entity)
+    private function createBookingForm($slug)
     {
-        $form = $this->createForm(new BookingCreate(), $entity, array(
-            'action' => $this->generateUrl('pfe_frontend_booking_create'),
+        $form = $this->createForm(new BookingCreate(), null, array(
+            'action' => $this->generateUrl('pfe_frontend_booking_create', array('slug' => $slug)),
             'method' => 'POST',
         ));
 

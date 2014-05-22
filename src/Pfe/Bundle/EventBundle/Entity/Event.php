@@ -124,7 +124,7 @@ class Event
     /**
      * @var Booking
      *
-     * @ORM\OneToOne(targetEntity="Pfe\Bundle\BookingBundle\Entity\Booking", mappedBy="event",  cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="Pfe\Bundle\BookingBundle\Entity\Booking", mappedBy="event",  cascade={"remove"})
      */
     private $booking;
 

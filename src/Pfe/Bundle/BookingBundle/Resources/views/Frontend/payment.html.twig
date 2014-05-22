@@ -1,8 +1,6 @@
 {% extends 'PfeWebBundle:Frontend:layout.html.twig' %}
 
-{% block title_page %}
-    {{ event.title }}
-{% endblock %}
 {% block content %}
-    {{ form(booking_form) }}
+    {{ form_start(form) }}
+    {{ form_end(form) }}
 {% endblock %}

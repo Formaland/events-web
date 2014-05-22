@@ -2,6 +2,10 @@ customer_security_login_locale:
     pattern:  /{locale}/login
     defaults: { _controller: "FOSUserBundle:Security:login", locale: %locale% }
 
+customer_security_login:
+    pattern:  /login
+    defaults: { _controller: "FOSUserBundle:Security:login" }
+
 customer_security_login_check:
     pattern:  /login_check
     defaults: { _controller: "FOSUserBundle:Security:check" }

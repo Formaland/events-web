@@ -2,13 +2,6 @@ pfe_web_frontend_homepage:
     pattern:  /
     defaults: { _controller: PfePageBundle:Frontend/Page:home, locale: %locale% }
 
-pfe_web_frontend_page:
-    pattern:  /{locale}/{slug}
-    defaults: { _controller: PfePageBundle:Frontend/Page:show, locale: %locale% }
-
-pfe_web_frontend_booking:
-    resource: "@PfeBookingBundle/Resources/config/routing/frontend/routing.yml"
-
 fos_user_profile:
     resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
     prefix: /profile
@@ -27,3 +20,14 @@ fos_user_change_password:
 
 fos_user_security:
     resource: "@PfeCustomerBundle/Resources/config/routing/frontend/security.yml"
+
+pfe_web_frontend_event:
+    resource: "@PfeEventBundle/Resources/config/routing/frontend/event.yml"
+
+pfe_web_frontend_booking:
+    resource: "@PfeBookingBundle/Resources/config/routing/frontend/routing.yml"
+    prefix: /register
+
+pfe_web_frontend_page:
+    pattern:  /{locale}/{slug}
+    defaults: { _controller: PfePageBundle:Frontend/Page:show, locale: %locale% }

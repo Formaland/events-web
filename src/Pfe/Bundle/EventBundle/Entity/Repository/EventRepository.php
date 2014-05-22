@@ -62,4 +62,17 @@ class EventRepository extends EntityRepository
 
         return $query->getQuery()->getOneOrNullResult();
     }
+
+    public function findOneBySlugAndLocale($slug = null, $locale)
+    {
+        $query = $this->getEntityManager()->createQueryBuilder('p');
+        $query->select('p, pTrans')
+            ->from('PfeEventBundle:Event', 'p')
+            ->innerJoin('p.translations', 'pTrans')
+            ->where('pTrans.slug = :slug')
+            ->andWhere('pTrans.locale = :locale')
+            ->setParameters(array('locale' => $locale, 'slug' => $slug));
+
+        return $query->getQuery()->getOneOrNullResult();
+    }
 }

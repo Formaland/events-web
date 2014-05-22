@@ -17,6 +17,9 @@ class PageTranslationCreate extends AbstractType
         $builder
             ->add('title')
             ->add('content')
+            ->add('slug', 'text', array(
+                'required' => false,
+            ))
         ;
     }
     
